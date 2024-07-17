@@ -1,33 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&family=Yuji+Hentaigana+Akari&display=swap');
 /*apariencia del fondo*/
+/*
 body.index{
-    font-family: 'Metal Mania',sans-serif;
-    margin: 0;
-    padding: 0;
-    background-image: linear-gradient(to top, #5dffe1 8%, #8964ba 100%);
-    height: 100vh;
-    display: grid;
-    min-height: 100vh;
-    grid-template-rows: auto 1fr auto
+    font-family: 'Metal Mania',sans-serif; |
+    margin: 0; |
+    padding: 0; |
+    background-image: linear-gradient(to top, #5dffe1 8%, #8964ba 100%); |
+    height: 100vh; |
+    display: grid; |
+    min-height: 100vh; |
+    grid-template-rows: auto 1fr auto |
+    @apply font-sans m-0 p-0 h-screen grid min-h-screen bg-gradient-to-t from-customCyan to-customPurple;
 }
+*/
 /*Tabla central*/
+/*
 .main-container{
     background-color: rgb(12, 36, 62);
     margin: 200px auto;
     width: 500px;
     border-radius: 10px
+    @apply bg-customBlue my-48 mx-auto w-[500px] rounded-[10px];
     
 }
-h1{
+*/
+/*
+.titulo-test{
     text-align: center;
     padding: 20px;
     margin-top: 20px;
     text-transform: capitalize;
     color: white
+    @apply text-center p-20 m-20 text-white capitalize;
 }
+*/
 .container{
     font-family: 'Metal Mania',sans-serif;
     width: 450px;
