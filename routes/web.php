@@ -9,4 +9,5 @@ Route::get('/', function () {
 */
 Route::get('/',[TaskController::class,'index']);
 Route::post('/', [TaskController::class,'store']);
+Route::put('/{id}', [TaskController::class,'update'])->name('task.update');
 Route::delete('/{id}', [TaskController::class,'destroy'])->name('task.destroy');
