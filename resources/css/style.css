@@ -37,7 +37,6 @@ body.index{
 }
 */
 .container{
-    font-family: 'Metal Mania',sans-serif;
     width: 450px;
     display: flex;
     padding: 20px;
@@ -49,6 +48,14 @@ body.index{
     padding: 10px;
     font-size: 20px;
     border-radius: 10px;
+    width: 280px
+}
+.container input[type="text"]:hover{
+    font-family: 'Metal Mania',sans-serif;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--color);
     width: 280px
 }
 .addButton {
@@ -72,8 +79,8 @@ body.index{
 }
 .addButton nav:nth-child(n) {
     position: absolute;
-    width: 5px;
-    height: 5px;
+    width: 10px;
+    height: 10px;
     border: 3px solid;
     transition: all 0.6s ease;
 }
@@ -109,11 +116,15 @@ body.index{
     color: rgb(0, 0, 0);
     margin-bottom: 10px;
     display: flex;
+    margin: 20px;
     text-transform: capitalize;
-    border-radius: 10px;
-    background-color: rgb(121, 73, 180);
+    border-radius: 5px;
+    border: 3px solid;
+    //background-color: rgb(121, 73, 180);
     padding: 20px;
     justify-content: space-between;
+    @apply bg-customBlue border-white;
+    flex-wrap: wrap;
 }
 
 .TaskList tr td {
@@ -129,21 +140,71 @@ body.index{
     justify-content: flex-end;
     align-items: center;
 }
-
-.TaskList tr td .deleteButton {
+/*Boton de listo*/
+.TaskList tr td .checkButton {
     cursor: pointer;
-    background: none;
-    border: none;
-    color: inherit;
-    font: inherit;
-    outline: inherit;
     padding: 5px;
     margin-left: 10px;
+    text-decoration: none;
+    padding: 10px 30px;
+    position: relative;
+    margin: 0px;
+    color: rgb(255, 255, 255);
+    letter-spacing: 1px;
+    border: 3px solid;
+    transition: all 0.6s ease;
+    @apply bg-customBlue;
 }
 
-.TaskList tr td .deleteButton:hover {
-    color: #ffffff;
+.TaskList tr td .checkButton:hover {
+    //color: #ffffff;
+    border-color: var(--color);
+    box-shadow: 0 0 20px var(--color);
+    color: var(--color);
 }
+/*Boton de edición*/
+.TaskList tr td .editButton {
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 10px;
+    text-decoration: none;
+    padding: 10px 30px;
+    position: relative;
+    margin: 0px;
+    color: rgb(255, 255, 255);
+    letter-spacing: 1px;
+    border: 3px solid;
+    transition: all 0.6s ease;
+    @apply bg-customBlue;
+}
+.TaskList tr td .editButton:hover {
+    //color: #ffffff;
+    border-color: var(--color);
+    box-shadow: 0 0 20px var(--color);
+    color: var(--color);
+}
+/*Boton de eliminación*/
+.TaskList tr td .deleteButton {
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 10px;
+    text-decoration: none;
+    padding: 10px 30px;
+    position: relative;
+    margin: 0px;
+    color: rgb(255, 255, 255);
+    letter-spacing: 1px;
+    border: 3px solid;
+    transition: all 0.6s ease;
+    @apply bg-customBlue;
+}
+.TaskList tr td .deleteButton:hover {
+    //color: #ffffff;
+    border-color: var(--color);
+    box-shadow: 0 0 20px var(--color);
+    color: var(--color);
+}
+/*Color florocente*/
 :root{
     --color: #7e00cd;
 }
