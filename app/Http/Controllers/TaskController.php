@@ -12,8 +12,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $task['task']= Task::all();
-        return view('task.index', $task);
+        $tasks = Task::all();
+        return view('task.index', compact('tasks'));
     }
 
     /**
@@ -29,7 +29,8 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $task= $request->all();
+        $task= $request->only('task','description');
+        $task['status']= false;
         Task::create($task);
         return redirect('/');
     }
@@ -53,13 +54,18 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, task $id){
-        //$task = task::findOrFail($id);
-        $id->task = $request->task;
-        $id->save();
+    public function update(Request $request, Task $id){
+        $task= Task::findOrFail($id);
+        $task->task = $request->task;
+        $task->save();
         return redirect('/');
     }
-
+    public function toggleStatus(Task $id){
+        $task= Task::findOrFail($id);
+        $task->status = !$task->status;
+        $task->save();
+        return redirect('/');
+    }
     /**
      * Remove the specified resource from storage.
      */
