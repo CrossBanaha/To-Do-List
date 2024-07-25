@@ -11,5 +11,5 @@ Route::get('/', function () {
 Route::get('/',[TaskController::class,'index']);
 Route::post('/', [TaskController::class,'store'])->name('task.create');
 Route::put('/{id}', [TaskController::class,'update'])->name('task.update');
-Route::patch('/{id}/toogle-status',[TaskController::class,'toggleStatus'])->name('task.toggleStatus');
+Route::patch('/{id}', [TaskController::class, 'toggleStatus'])->name('task.toggleStatus');
 Route::delete('/{id}', [TaskController::class,'destroy'])->name('task.destroy');
