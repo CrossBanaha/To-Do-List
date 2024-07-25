@@ -1,41 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/*apariencia del fondo*/
-/*
-body.index{
-    font-family: 'Metal Mania',sans-serif; |
-    margin: 0; |
-    padding: 0; |
-    background-image: linear-gradient(to top, #5dffe1 8%, #8964ba 100%); |
-    height: 100vh; |
-    display: grid; |
-    min-height: 100vh; |
-    grid-template-rows: auto 1fr auto |
-    @apply font-sans m-0 p-0 h-screen grid min-h-screen bg-gradient-to-t from-customCyan to-customPurple;
-}
-*/
-/*Tabla central*/
-/*
-.main-container{
-    background-color: rgb(12, 36, 62);
-    margin: 200px auto;
-    width: 500px;
-    border-radius: 10px
-    @apply bg-customBlue my-48 mx-auto w-[500px] rounded-[10px];
-    
-}
-*/
-/*
-.titulo-test{
-    text-align: center;
-    padding: 20px;
-    margin-top: 20px;
-    text-transform: capitalize;
-    color: white
-    @apply text-center p-20 m-20 text-white capitalize;
-}
-*/
 .container{
     width: 450px;
     display: flex;
@@ -73,7 +38,6 @@ body.index{
     cursor: pointer;
 }
 .addButton:hover {
-    background-color: rgb(12, 36, 62);
     box-shadow: 0 0 20px var(--color);
     border-color: var(--color);
     color: var(--color);
@@ -93,7 +57,7 @@ body.index{
 .addButton nav:nth-child(2) {
     left: 10%;
     bottom: -6px;
-    background-color: rgb(12, 36, 62);
+    background-color: #fff;
 }
 .addButton:hover nav:nth-child(1) {
     right: 80%;
@@ -105,6 +69,7 @@ body.index{
     left: 80%;
     transform: rotate(90deg);
     color: var(--color);
+    background-color: var(--color);
 }
 .TaskList {
     width: 100%;
@@ -112,75 +77,70 @@ body.index{
     padding: 20px;
 }
 
+/* Estilos de la tabla */
 .TaskList tr {
-    font-size: 18px;
-    color: rgb(0, 0, 0);
-    margin-bottom: 10px;
     display: flex;
-    margin: 20px;
-    text-transform: capitalize;
-    border-radius: 5px;
-    border: 3px solid;
-    //background-color: rgb(121, 73, 180);
-    padding: 20px;
     justify-content: space-between;
-    @apply bg-customBlue border-white;
+    align-items: center;
     flex-wrap: wrap;
+    padding: 20px;
+    margin: 20px;
+    border: 3px solid white;
+    border-radius: 5px;
+    font-size: 18px;
+    text-transform: capitalize;
 }
-
 .TaskList tr td {
     padding: 2px;
 }
-
 .TaskList tr td:first-child {
-    flex-grow: 1;
+    flex-grow: 2; /* Ajusta según sea necesario */
 }
-
-.TaskList tr td:last-child {
+.TaskList tr td:nth-child(2) {
+    flex-grow: 3; /* Ajusta según sea necesario */
+}
+.TaskList tr td.actions {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    flex-grow: 1;
 }
-/*Boton de listo*/
+/* Botón de check */
 .TaskList tr td .checkButton {
     cursor: pointer;
-    text-decoration: none;
     padding: 2.5px 10px;
-    position: relative;
-    margin: 0px;
-    color: rgb(255, 255, 255);
+    margin: 0;
+    color: #fff;
     letter-spacing: 1px;
     border: 3px solid;
     border-radius: 10px;
     transition: all 0.6s ease;
-    @apply bg-customBlue;
 }
 .TaskList tr td .checkButton:hover {
-    //color: #ffffff;
     border-color: var(--color);
     box-shadow: 0 0 20px var(--color);
     color: var(--color);
 }
-/*Boton de edición*/
-.TaskList tr td .editButton {
+/* Botón de edición */
+.TaskList tr td .editButton,
+.TaskList tr td .deleteButton {
     cursor: pointer;
-    padding: 5px;
-    margin-left: 10px;
-    text-decoration: none;
     padding: 2.5px 10px;
-    position: relative;
-    margin: 0px;
-    color: rgb(255, 255, 255);
+    margin: 0 5px;
+    color: #fff;
     letter-spacing: 1px;
     border: 3px solid;
     border-radius: 10px;
     transition: all 0.6s ease;
-    @apply bg-customBlue;
 }
-.TaskList:hover tr td .box input[type="text"]{
-    width: 100px;
+.TaskList tr td .editButton:hover,
+.TaskList tr td .deleteButton:hover {
+    border-color: var(--color);
+    box-shadow: 0 0 20px var(--color);
+    color: var(--color);
 }
-.TaskList tr td .box input[type="text"]{
+/* Definir el estado por defecto de los campos de entrada */
+.TaskList tr td .box input[type="text"] {
     width: 0;
     outline: none;
     border: none;
@@ -188,33 +148,9 @@ body.index{
     font-weight: 500;
     transition: 0.8s;
 }
-.TaskList tr td .editButton:hover {
-    //color: #ffffff;
-    border-color: var(--color);
-    box-shadow: 0 0 20px var(--color);
-    color: var(--color);
-}
-/*Boton de eliminación*/
-.TaskList tr td .deleteButton {
-    cursor: pointer;
-    padding: 5px;
-    margin-left: 10px;
-    text-decoration: none;
-    padding: 2.5px 10px;
-    position: relative;
-    margin: 0px;
-    color: rgb(255, 255, 255);
-    letter-spacing: 1px;
-    border: 3px solid;
-    border-radius: 10px;
-    transition: all 0.6s ease;
-    @apply bg-customBlue;
-}
-.TaskList tr td .deleteButton:hover {
-    //color: #ffffff;
-    border-color: var(--color);
-    box-shadow: 0 0 20px var(--color);
-    color: var(--color);
+/* Expandir los campos de entrada cuando el cursor esté sobre el botón de edición */
+.TaskList tr td .box:hover input[type="text"] {
+    width: 100px;
 }
 /*Color florocente*/
 :root{
