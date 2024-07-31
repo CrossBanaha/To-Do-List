@@ -1,43 +1,29 @@
-<table class="TaskList">
+<div class="grid grid-cols-3 gap-4 w-[90%] m-auto">
     @foreach ($tasks as $task)
-    <tr>
-        <td class="text-white">
-            {{$task->task}}
-        </td>
-        <td class="text-white text-xs"><h4>{{$task->description}}</h4></td>
-        <td class="actions">
-        <form action="{{route('task.update', $task->id)}}" method="post" class="inline">
-            @csrf
-            @method('PUT')
-            <div class="box">
-                <input type="text" name="task" value="{{ old('task', $task->task) }}">
-                @error('task')
-                    <div class="text-red-500 border-red-600">{{ $message }}</div>
-                @enderror
-                <input type="text" name="description" value="{{ old('description', $task->description) }}">
-                @error('description')
-                    <div class="text-red-500 border-red-600">{{ $message }}</div>
-                @enderror
-                <button id="edit" class="editButton">
+    <div class="p-[10px]">
+        <div class="p-4 rounded-lg shadow flex flex-col border-solid border-[3px] border-white text-white">
+            <div class="font-bold text-[1em] text-center">{{$task->task}}</div>
+            <div class="text-[0.8em] mt-[5px] mb-[5px] text-center">{{$task->description}}</div>
+            <div class="flex justify-center">
+                <button id="edit-{{ $task->id }}" class="editButton" onclick="openModal({{ $task->id }})">
                     &#10000;
                 </button>
+                <form action="{{ route('task.toggleStatus', $task->id) }}" method="post" class="inline">
+                    @csrf
+                    @method('PATCH')
+                    <button class="checkButton {{ $task->status ? 'bg-customCyan' : 'bg-customPurple ' }}">
+                        {!! $task->status ? '&#10003;' : '&#10008;' !!}
+                    </button>
+                </form>
+                <form action="{{ route('task.destroy', $task->id) }}" method="post" class="inline">
+                    @csrf
+                    @method('DELETE')
+                    <button id="delete" class="deleteButton">
+                        &#8861;
+                    </button>
+                </form>
             </div>
-        </form>
-        <form action="{{route('task.toggleStatus', $task->id)}}" method="post" class="inline">
-            @csrf
-            @method('PATCH')
-            <button class="checkButton {{$task->status ? 'bg-green-600' : 'bg-red-600'}}">
-                {!! $task->status ? '&#10004;' : '&#10008;' !!}
-            </button>
-        </form>
-        <form action="{{route('task.destroy', $task->id)}}" method="post" class="inline">
-            @csrf
-            @method('DELETE')
-            <button id="delete" class="deleteButton">
-                &#10006;
-            </button>
-        </form>
-    </td>
-    </tr>
+        </div>
+    </div>
     @endforeach
-</table>
+</div>
