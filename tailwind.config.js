@@ -11,8 +11,8 @@ export default {
         'layout': 'auto 1fr auto',
       },
       colors:{
-        customCyan: '#5dffe1',
-        customPurple: '#8964ba',
+        customCyan: '#038fab',
+        customPurple: '#31005c',
         customBlue: 'rgb(12, 36, 62)',
       }
     },

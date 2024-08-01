@@ -1,41 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&family=Yuji+Hentaigana+Akari&display=swap');
 /*apariencia del fondo*/
-/*
 body.index{
-    font-family: 'Metal Mania',sans-serif; |
-    margin: 0; |
-    padding: 0; |
-    background-image: linear-gradient(to top, #5dffe1 8%, #8964ba 100%); |
-    height: 100vh; |
-    display: grid; |
-    min-height: 100vh; |
-    grid-template-rows: auto 1fr auto |
-    @apply font-sans m-0 p-0 h-screen grid min-h-screen bg-gradient-to-t from-customCyan to-customPurple;
+    font-family: 'Metal Mania',sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to top, #5dffe1 8%, #8964ba 100%);
+    height: 100vh;
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto
 }
-*/
 /*Tabla central*/
-/*
 .main-container{
     background-color: rgb(12, 36, 62);
     margin: 200px auto;
     width: 500px;
     border-radius: 10px
-    @apply bg-customBlue my-48 mx-auto w-[500px] rounded-[10px];
     
 }
-*/
-/*
-.titulo-test{
+h1{
     text-align: center;
     padding: 20px;
     margin-top: 20px;
     text-transform: capitalize;
     color: white
-    @apply text-center p-20 m-20 text-white capitalize;
 }
-*/
 .container{
     font-family: 'Metal Mania',sans-serif;
     width: 450px;
@@ -98,13 +87,11 @@ body.index{
     transform: rotate(90deg);
     color: var(--color);
 }
-.TaskList {
-    width: 100%;
-    border-collapse: collapse;
-    padding: 20px;
+.ToDo-List{
+    list-style: none;
+    padding: 20px
 }
-
-.TaskList tr {
+.ToDo-List li{
     font-size: 18px;
     color: rgb(0, 0, 0);
     margin-bottom: 10px;
@@ -113,36 +100,20 @@ body.index{
     border-radius: 10px;
     background-color: rgb(121, 73, 180);
     padding: 20px;
-    justify-content: space-between;
+    justify-content: space-between
 }
-
-.TaskList tr td {
-    padding: 10px;
-}
-
-.TaskList tr td:first-child {
-    flex-grow: 1;
-}
-
-.TaskList tr td:last-child {
-    display: flex;
-    justify-content: flex-end;
+.ToDo-List li input[type="checkbox"]{
+    width: 18px;
+    height: 18px;
     align-items: center;
+    border-radius: 4px;
+    margin-right: 10px;
 }
-
-.TaskList tr td .deleteButton {
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: inherit;
-    font: inherit;
-    outline: inherit;
-    padding: 5px;
-    margin-left: 10px;
+.ToDo-List li .delete{
+    cursor: pointer
 }
-
-.TaskList tr td .deleteButton:hover {
-    color: #ffffff;
+.ToDo-List li .delete:hover{
+    color: #ffffff
 }
 :root{
     --color: #7e00cd;

@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.addButton {
+    text-decoration: none;
+    padding: 5px 30px;
+    letter-spacing: 1px;
+    transition: all 0.6s ease;
+    background: none;
+    @apply font-sans relative m-0 text-white border-white border-solid border-[3px] rounded-[10px] cursor-pointer;
+}
+.addButton:hover {
+    box-shadow: 0 0 20px var(--color);
+    border-color: var(--color);
+    color: var(--color);
+}
+.addButton nav:nth-child(n) {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 3px solid;
+    transition: all 0.6s ease;
+}
+.addButton nav:nth-child(1) {
+    right: 10%;
+    top: -6px;
+    background-color: #fff;
+}
+.addButton nav:nth-child(2) {
+    left: 10%;
+    bottom: -6px;
+    background-color: #fff;
+}
+.addButton:hover nav:nth-child(1) {
+    right: 80%;
+    transform: rotate(90deg);
+    color: var(--color);
+    background-color: var(--color);
+}
+.addButton:hover nav:nth-child(2) {
+    left: 80%;
+    transform: rotate(90deg);
+    color: var(--color);
+    background-color: var(--color);
+}
+/*Section for Task*/
+.checkButton, .editButton, .deleteButton {
+    padding: 2.5px 10px;
+    margin: 0 5px;
+    transition: all 0.6s ease;
+    @apply cursor-pointer tracking-[1px] border-solid border-[3px] rounded-[10px] border-white text-white;
+}
+.checkButton:hover, .editButton:hover, .deleteButton:hover {
+    border-color: var(--color);
+    box-shadow: 0 0 20px var(--color);
+    color: var(--color);
+}
+/*Section interface*/
+#editModal input[type="text"]{
+    @apply font-sans p-[5px] rounded-[10px] w-[125px] mt-[10px] text-gray-500;
+}
+#editModal input[type="text"]:hover{
+    box-shadow: 0 0 20px var(--color);
+    @apply font-sans p-[5px] rounded-[10px] w-[130px] mt-[10px] text-gray-500;
+}
+.saveButton,
+.cancelButton {
+    cursor: pointer;
+    padding: 2.5px 10px;
+    margin-top: 10px;
+    color: #fff;
+    letter-spacing: 1px;
+    border: 3px solid;
+    border-radius: 10px;
+    transition: all 0.6s ease;
+}
+.saveButton:hover,
+.cancelButton:hover{
+    border-color: var(--color);
+    box-shadow: 0 0 20px var(--color);
+    color: var(--color);
+}
+:root{
+    --color: #7e00cd;
+}

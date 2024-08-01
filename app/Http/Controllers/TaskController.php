@@ -1,70 +1,57 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\task;
 use Illuminate\Http\Request;
-
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $task['task']= Task::all();
-        return view('task.index', $task);
+        $tasks = Task::paginate(6);
+        return view('task.index', compact('tasks'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $task= $request->all();
-        Task::create($task);
-        return redirect('/');
+        $validatedData = $request->validate([
+            'task' => 'required|string|max:10',
+            'description' => 'required|string|min:10',
+        ]);
+        $validatedData['status'] = false; // Set the status to false when creating a new task
+        Task::create($validatedData);
+        return redirect('/')->with('success', 'Task created successfully!');
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(task $task)
+    public function show(Task $task)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(task $task)
+    public function edit(Task $task)
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, task $task)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $validatedData = $request->validate([
+            'task' => 'required|string|max:10',
+            'description' => 'required|string|min:10',
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
+        $task = Task::findOrFail($id);
+        $task->update($validatedData);
+        return redirect('/')->with('success', 'Task updated successfully!');
+    }
+    public function toggleStatus($id){
+        $task = Task::findOrFail($id);
+        $task->status = !$task->status;
+        $task->save();
+        return redirect('/')->with('success', 'Task status updated successfully!');
+    }
     public function destroy($id)
     {
         $task= Task::findOrFail($id);
         $task->delete();
-        return redirect('/');
+        return redirect('/')->with('success', 'Task deleted successfully!');
     }
 }
