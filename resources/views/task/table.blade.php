@@ -8,14 +8,14 @@
                 <button id="edit-{{ $task->id }}" class="editButton" onclick="openModal({{ $task->id }})">
                     &#10000;
                 </button>
-                <form action="{{ route('task.toggleStatus', $task->id) }}" method="post" class="inline">
+                <form action="{{ route('tasks.toggleStatus', $task->id) }}" method="post" class="inline">
                     @csrf
                     @method('PATCH')
                     <button class="checkButton {{ $task->status ? 'bg-customCyan' : 'bg-customPurple ' }}">
                         {!! $task->status ? '&#10003;' : '&#10008;' !!}
                     </button>
                 </form>
-                <form action="{{ route('task.destroy', $task->id) }}" method="post" class="inline">
+                <form action="{{ route('tasks.destroy', $task->id) }}" method="post" class="inline">
                     @csrf
                     @method('DELETE')
                     <button id="delete" class="deleteButton">
