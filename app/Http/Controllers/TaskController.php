@@ -19,7 +19,7 @@ class TaskController extends Controller
             'task' => 'required|string|max:10',
             'description' => 'required|string|min:10',
         ]);
-        $validatedData['status'] = false; // Set the status to false when creating a new task
+        $validatedData['status'] = false;
         Task::create($validatedData);
         return redirect()->route('tasks.index')->with('success', 'Task created successfully!');
     }
