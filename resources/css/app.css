@@ -57,11 +57,18 @@
 }
 /*Section interface*/
 #editModal input[type="text"]{
-    @apply font-sans p-[5px] rounded-[10px] w-[125px] mt-[10px] text-gray-500;
+    @apply font-sans p-[5px] rounded-[10px] w-[230px] mt-[10px] ml-[70px] text-gray-500;
 }
 #editModal input[type="text"]:hover{
     box-shadow: 0 0 20px var(--color);
-    @apply font-sans p-[5px] rounded-[10px] w-[130px] mt-[10px] text-gray-500;
+    @apply font-sans p-[5px] rounded-[10px] w-[230px] mt-[10px] text-gray-500;
+}
+#editModal .descriptionText{
+    @apply font-sans p-[5px] rounded-[10px] w-[230px] mt-[10px] ml-[20px] text-gray-500;
+}
+#editModal .descriptionText:hover{
+    box-shadow: 0 0 20px var(--color);
+    @apply font-sans p-[5px] rounded-[10px] w-[230px] mt-[10px] text-gray-500;
 }
 .saveButton,
 .cancelButton {
