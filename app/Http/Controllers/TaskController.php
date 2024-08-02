@@ -21,7 +21,7 @@ class TaskController extends Controller
         ]);
         $validatedData['status'] = false; // Set the status to false when creating a new task
         Task::create($validatedData);
-        return redirect('/')->with('success', 'Task created successfully!');
+        return redirect()->route('tasks.index')->with('success', 'Task created successfully!');
     }
     public function show(Task $task)
     {
@@ -31,27 +31,24 @@ class TaskController extends Controller
     {
         //
     }
-    public function update(Request $request, $id)
+    public function update(Request $request, Task $task)
     {
         $validatedData = $request->validate([
             'task' => 'required|string|max:10',
             'description' => 'required|string|min:10',
         ]);
-
-        $task = Task::findOrFail($id);
         $task->update($validatedData);
-        return redirect('/')->with('success', 'Task updated successfully!');
+        return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');
     }
-    public function toggleStatus($id){
-        $task = Task::findOrFail($id);
+    public function toggleStatus(Task $task)
+    {
         $task->status = !$task->status;
         $task->save();
-        return redirect('/')->with('success', 'Task status updated successfully!');
+        return redirect()->route('tasks.index')->with('success', 'Task status updated successfully!');
     }
-    public function destroy($id)
+    public function destroy(Task $task)
     {
-        $task= Task::findOrFail($id);
         $task->delete();
-        return redirect('/')->with('success', 'Task deleted successfully!');
+        return redirect()->route('tasks.index')->with('success', 'Task deleted successfully!');
     }
 }
